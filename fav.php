@@ -11,7 +11,7 @@
 
 div{
     display: grid;
-    grid-template-columns: repeat(1,1fr);
+    
     grid-gap: 1rem;
     margin-bottom: 10px;
   
@@ -38,6 +38,7 @@ a{
     <div>
         <a  href="./deconn.php">Deconnexion</a>
         <a href="./books.php">Retour à la recherche</a>
+        
         <?php
             $conn = new mysqli('localhost','root','','site');
             session_start();
@@ -46,15 +47,20 @@ a{
             $response = mysqli_query($conn, $req);
             foreach($response as $response1){
                 $img=$response1['image'];
+                echo "<div class ='All-cards>";
+                echo "<div class ='cards>";
                 echo "<img class='center' src= '$img'>" ."</img>" ;
                 echo "<h1 class='center'>" . $response1['titre']. "</h1>";
                 echo "<h2 class='center'>" . $response1['author']. "</h2>";
-                echo "<p class='center'>" . $response1['id_user']. "</p>";
+                echo "<span class='center'>" .'Id:'. "</span>";
+                echo "<span class='center'>" .$response1['id_user']. "</span>";
                 echo '<form method="GET" action="info2.php">';
                 echo '<input  type="hidden" name="id" value="' . "{$response1['id']}" . '">';
                 echo '<input  type="hidden"name="traitement" value = "suppression">';
                 echo '<button class="center" type="submit">Supprimer de tes favoris</button>';
                 echo '</form>';
+                echo '</div>';
+                echo '</div>';
                 echo '<hr>';
                 echo '<br>';
 

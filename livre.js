@@ -33,8 +33,8 @@ function showLivre(Livres) {
         // Create a card element for the book
         const cardElem = document.createElement("div");
         cardElem.classList.add("card");
-        cardElem.style.width = "18rem";
-        cardElem.style.height = "30rem";
+        cardElem.style.maxWidth = "18rem";
+        
         cardElem.style.marginBottom = "5rem";
         cardElem.style.position = "relative";
         cardElem.style.left = "20px";
@@ -63,8 +63,15 @@ function showLivre(Livres) {
         titleElem.textContent = "Nom: " + (title);
         titleElem.style.fontWeight = "bold";
         titleElem.style.fontSize = "21px";
-        titleElem.style.textAlign = "center";
+       titleElem.style.textAlign = 'center'
         titleElem.style.backgroundColor = "rgb(56, 53, 105)";
+
+          // Decrease font size if title is too long
+          if (title.length > 40) {
+            titleElem.style.fontSize = "16px";
+        } else {
+            titleElem.style.fontSize = "20px";
+        }
 
         
         cardBodyElem.appendChild(br)
@@ -96,13 +103,12 @@ function showLivre(Livres) {
         inputImg.name="image";
 
         // Add Ajoiter Button
-        const btns = document.createElement("input")
-        btns.classList.add("ajouter")
+        const btns = document.createElement("button")
+        btns.classList.add("btn-ajouter")
         btns.textContent = "Ajouter"
-        btns.style.color = "white"
-        btns.style.position = "relative !important"
-        btns.style.top= "30px"
-        btns.style.left= "86px"
+        btns.style.position = "absolute !important"
+        btns.style.marginTop= "40px"
+        btns.style.marginBottom= "40px"
         btns.type="submit";
 
 
